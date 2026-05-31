@@ -26,3 +26,12 @@ export const validateRegisterUser =[
         validationResultReq
 
 ]
+
+
+export const validateLogin = [
+    body("email")
+        .isEmail().withMessage("Invalid email format"),
+    body("password")
+        .isLength({min:6}).withMessage("password must be at least 6 characters"),
+    validationResultReq
+]
