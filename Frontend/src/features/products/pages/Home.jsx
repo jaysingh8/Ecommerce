@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { useProduct } from '../hook/useProduct'
+import { useNavigate } from 'react-router'
 
 const Home = () => {
     const products = useSelector(state => state.product.products)
     const { handleGetAllProducts } = useProduct()
-
+    const navigate = useNavigate()
     useEffect(() => {
         handleGetAllProducts()
     }, [])
@@ -65,6 +66,7 @@ const Home = () => {
                                 const imageUrl = getProductImage(product)
                                 return (
                                     <div
+                                        onClick={()=>navigate(`/product/${product._id}`)}
                                         key={product._id}
                                         className="group rounded-[28px] border border-[#E7E1D2] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] overflow-hidden transition-all duration-300 hover:shadow-[0_20px_50px_rgba(0,0,0,0.08)] hover:border-[#B79A4A]"
                                     >
