@@ -2,10 +2,14 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router'
 import { useProduct } from '../hook/useProduct'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router'
+
 
 const Dashboard = () => {
     const { handleGetSellerProduct } = useProduct()
     const sellerProducts = useSelector(state => state.product.sellerProducts)
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         handleGetSellerProduct()
@@ -74,7 +78,9 @@ const Dashboard = () => {
                         sellerProducts.map((product) => {
                             const imageUrl = getProductImage(product)
                             return (
-                                <div key={product._id || product.id || product.title} className="rounded-[30px] border border-[#E7E1D2] bg-white shadow-[0_20px_40px_rgba(0,0,0,0.04)] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
+                                <div 
+                                onClick={()=>navigate(`/seller/product/${product._id}`)}
+                                key={product._id || product.id || product.title} className="rounded-[30px] border border-[#E7E1D2] bg-white shadow-[0_20px_40px_rgba(0,0,0,0.04)] overflow-hidden transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_30px_60px_rgba(0,0,0,0.08)]">
                                     <div className="h-56 bg-[#F8F6F1] overflow-hidden">
                                         {imageUrl ? (
                                             <img

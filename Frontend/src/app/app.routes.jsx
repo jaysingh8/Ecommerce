@@ -6,6 +6,7 @@ import Dashboard from '../features/products/pages/Dashboard'
 import Protected from '../features/auth/components/Protected'
 import Home from '../features/products/pages/Home'
 import ProductDetailed from '../features/products/pages/ProductDetailed'
+import SellerProductDetials from '../features/products/pages/SellerProductDetials'
 
 
 
@@ -32,6 +33,9 @@ export const routes = createBrowserRouter([
             },{
                 path:"/seller/dashboard",
                 element:<Protected role='seller'><Dashboard/></Protected>
+            },{
+                path:"/seller/product/:productId",
+                element:<Protected role='seller'><SellerProductDetials/></Protected>
             }
         ]
     }

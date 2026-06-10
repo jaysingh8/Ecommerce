@@ -30,13 +30,44 @@ const productSchema = new mongoose.Schema({
         {
             url: {
                 type: String,
-                required:true
+                required: true
+            }
+        }
+    ],
+    variants: [
+        {
+            images: [
+                {
+                    url: {
+                        type: String,
+                        required: true
+                    }
+                }
+            ],
+            stock: {
+                type: Number,
+                default: 0
+            },
+            attributes: {
+                type: Map,
+                of: String
+            },
+            price: {
+                amount: {
+                    type: Number,
+                    required: false
+                },
+                currency: {
+                    type: String,
+                    enum: ["USD", "EUR", "JPY", "GBP", "INR"],
+                    default: "INR"
+                }
             }
         }
     ]
-},{timestamps:true})
+}, { timestamps: true })
 
 
-const productModel = mongoose.model('product',productSchema)
+const productModel = mongoose.model('product', productSchema)
 
 export default productModel
