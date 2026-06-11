@@ -10,7 +10,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "https://clothy-dypd.onrender.com",
+        target: "https://clothy-backend-djl7.onrender.com",
         changeOrigin: true,
         secure: false,
       }
